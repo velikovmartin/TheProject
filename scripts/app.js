@@ -22,10 +22,10 @@
     let postView = new PostView(selector, mainContentSelector);
     let postController = new PostController(postView,requester,baseUrl,appKey);
     
-    homeView.showGuestPage();
-    homeController.showGuestPage();
-    userController.showLoginPage();
-    userController.showRegisterPage();
+    // homeView.showGuestPage();
+    // homeController.showGuestPage();
+    // userController.showLoginPage();
+    // userController.showRegisterPage();
 
     initEventServices();
 
@@ -34,7 +34,9 @@
             homeController.showGuestPage();
         }
         else {
-            homeController.showUserPage();
+            homeController.showUserPage({
+                fullname: authService.getCurrentUserFullName()
+            });
         }
     });
 
@@ -56,11 +58,25 @@
     });
 
     onRoute('#/posts/create', function () {
+        if(!authService.isLoggedIn()) {
+            userController.showLoginPage(authService.isLoggedIn());
+            return;
+        }
+
         let data = {
-            fullname: sessionStorage['fullName']
+            fullname: authService.getCurrentUserFullName()
         };
 
         postController.showCreatePostPage(data, authService.isLoggedIn());
+    });
+
+    onRoute('#/posts/edit-:id', function () {
+        if(!authService.isLoggedIn()) {
+            userController.showLoginPage(authService.isLoggedIn());
+            return;
+        }
+
+        postController.showEditPostPage(this.params['id']);
     });
 
     bindEventHandler('login', function (ev, data) {
@@ -75,5 +91,9 @@
         postController.createPost(data);
     });
 
-    run('#/');
+    bindEventHandler('editPost', function (ev, data) {
+        postController.editPost(data);
+    });
+
+run('#/');
 })();

@@ -21,7 +21,8 @@ class UserController{
                 sessionStorage['username'] = data.username;
                 sessionStorage['fullName'] = data.fullname;
                 showPopup('success', 'You have successfully logged in.');
-                redirectUrl("#/");
+                // redirectUrl(location.hash); // TODO: make it work!
+                redirectUrl('#/');
             },
             function error(data) {
                 showPopup('error', 'An error has occured while attempting to login.');
