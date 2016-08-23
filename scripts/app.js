@@ -44,19 +44,15 @@
         let top = $("#post-" + this.params['id']).position().top;
         $(window).scrollTop(top);
     });
-
     onRoute("#/login", function () {
         userController.showLoginPage(authService.isLoggedIn());
     });
-
     onRoute("#/register", function () {
         userController.showRegisterPage(authService.isLoggedIn());
     });
-
     onRoute("#/logout", function () {
         userController.logout();
     });
-
     onRoute('#/posts/create', function () {
         if(!authService.isLoggedIn()) {
             userController.showLoginPage(authService.isLoggedIn());
@@ -69,30 +65,35 @@
 
         postController.showCreatePostPage(data, authService.isLoggedIn());
     });
-
     onRoute('#/posts/edit-:id', function () {
         if(!authService.isLoggedIn()) {
             userController.showLoginPage(authService.isLoggedIn());
             return;
         }
-
         postController.showEditPostPage(this.params['id']);
+    });
+    onRoute('#/posts/delete-:id', function () {
+        if(!authService.isLoggedIn()) {
+            userController.showLoginPage(authService.isLoggedIn());
+            return;
+        }
+         postController.showDeletePostPage(this.params['id']);
     });
 
     bindEventHandler('login', function (ev, data) {
         userController.login(data);
     });
-
     bindEventHandler('register', function (ev, data) {
         userController.register(data);
     });
-
     bindEventHandler('createPost', function (ev, data) {
         postController.createPost(data);
     });
-
     bindEventHandler('editPost', function (ev, data) {
         postController.editPost(data);
+    });
+    bindEventHandler('deletePost', function (ev, data) {
+        postController.deletePost(data);
     });
 
 run('#/');

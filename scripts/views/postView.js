@@ -74,4 +74,34 @@ class PostView {
             });
         });
     }
+    showDeletePostPage(params){
+        let _that = this;
+    
+        $.get("templates/form-user.html",function (template) {
+            let renderedWrapper = Mustache.render(template, params);
+            $(_that._wrapperSelector).html(renderedWrapper);
+    
+            $.get('templates/delete-post.html', function (template) {
+                var renderedContent = Mustache.render(template, params);
+                $(_that._mainContentSelector).html(renderedContent);
+    
+                $('#create-delete-post-request-button').on('click', function (ev) {
+                    let title = $('#title').val();
+                    let author = $('#author').val();
+                    let content = $('#content').val();
+                    let date = new Date() //moment().format("MMMM Do YYYY");
+
+                    let data = {
+                        title: title,
+                        author: author,
+                        content: content,
+                        date: params.date,
+                        modified: moment().format("MMMM Do YYYY"),
+                        _id: params._id
+                    };
+                    triggerEvent('deletePost', data);
+                });
+            });
+        });
+    }
 }

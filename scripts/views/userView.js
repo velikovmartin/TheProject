@@ -22,16 +22,25 @@ class UserView {
                 let rendered = Mustache.render(template,null);
                 $(_that._mainContentSelector).html(rendered);
 
-                $('#login-request-button').on('click', function (ev) {
+                let doStuff = function(ev) {
                     let username = $('#username').val();
                     let password = $('#password').val();
 
                     let data = {
-                        username: username,
-                        password: password
+                    username: username,
+                    password: password
                     };
                     triggerEvent('login', data);
-                });
+                };
+
+                // let pressEnter = function(event) {
+                //     event.preventDefault();
+                //     if (event.keyCode == 13) {
+                //         document.getElementById("login-request-button").click();
+                //     }
+                // };
+
+                $('#login-request-button').on('click', doStuff);
             });
         });
     }
