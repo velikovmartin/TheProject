@@ -22,14 +22,13 @@ class Requester {
         let requestHeaders = this._getHeaders(false);
         this._makeRequest('DELETE', url, data, requestHeaders, successCallback, errorCallback);
     }
-//  _makeRequest('GET',     url, null, requestHeaders,  successCallback, errorCallback);
-    _makeRequest(method,    url, data, headers,         successCallBack, errorCallBack) {
+
+    _makeRequest(method, url, data, headers, successCallBack, errorCallBack) {
         $.ajax({
             method: method,
             url: url,
             headers: headers,
-            data: data && JSON.stringify(data),   // TODO: razgledai
-            //data: JSON.stringify(data) || data
+            data: JSON.stringify(data) || null,
             beforeSend: function () {
                 if ($("#loader-modal").length) {
                     $("#loader-modal").css("display", "block");
@@ -73,10 +72,6 @@ class AuthorizationService {
         return sessionStorage['username'];
     }
 
-    getCurrentUserFullName() {
-        return sessionStorage['fullName'];
-    }
- 
     isLoggedIn() {
         return this.getCurrentUser() != undefined;
     }

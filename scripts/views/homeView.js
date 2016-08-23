@@ -6,7 +6,7 @@ class HomeView {
     showGuestPage(sideBarData, mainData){
         let _that = this;
         $.get('templates/welcome-guest.html', function (template) {
-            let renderedWrapper = Mustache.render(template, { neshto: "niakakva stoiniost"});
+            let renderedWrapper = Mustache.render(template, null);
 
             $(_that._wrapperSelector).html(renderedWrapper);
 
@@ -29,10 +29,10 @@ class HomeView {
             });
         });        
     }
-    showUserPage(sideBarData, mainData, params){
+    showUserPage(sideBarData, mainData){
         let _that = this;
         $.get('templates/welcome-user.html', function (template) {
-            let renderedWrapper = Mustache.render(template, params);
+            let renderedWrapper = Mustache.render(template, null);
 
             $(_that._wrapperSelector).html(renderedWrapper);
 

@@ -10,27 +10,27 @@ class HomeController{
         let _that = this;
 
         let recentPosts = [];
-                            // https://baas.kinvey.com   /appdata/    kid_HklM8dfu    /posts
 
-        let requestUrl =    this._baseServiceUrl +      "/appdata/" + this._appKey + "/posts"
+        let requestUrl = this._baseServiceUrl + "/appdata/" + this._appKey + "/posts"
 
         this._requester.get(requestUrl,
             function success(data) {
 
-                //TODO: ideia - resortirane po drug nachin na postovete
                 data.sort(function (elem1, elem2) {
                     let date1 = new Date(elem1._kmd.ect);
                     let date2 = new Date(elem2._kmd.ect);
                     return date2 - date1;
                 });
 
-                // let currentId = 1;
+                let currentId = 1;
+
                 for (let i = 0; i < data.length && i < 5; i++){
-                    data[i].postId = i+1;
-                    //recentPosts.push(data[i]);
+                    data[i].postId = currentId;
+                    currentId++;
+                    recentPosts.push(data[i]);
                 }
 
-                _that._homeView.showGuestPage(data.slice(0, 5), data);
+                _that._homeView.showGuestPage(recentPosts, data);
             },
             function error(data) {
                 showPopup('error', 'Error loading posts!')
@@ -38,7 +38,7 @@ class HomeController{
         );
     }
 
-    showUserPage(params){
+    showUserPage(){
         let _that = this;
         let recentPosts = [];
         let requestUrl = this._baseServiceUrl + "/appdata/" + this._appKey + "/posts"
@@ -59,7 +59,7 @@ class HomeController{
                     currentId++;
                     recentPosts.push(data[i]);
                 }
-                _that._homeView.showUserPage(recentPosts, data, params);
+                _that._homeView.showUserPage(recentPosts, data);
             },
             function error(data) {
                 showPopup('error', 'Error loading posts!')
