@@ -21,11 +21,6 @@
     
     let postView = new PostView(selector, mainContentSelector);
     let postController = new PostController(postView,requester,baseUrl,appKey);
-    
-    // homeView.showGuestPage();
-    // homeController.showGuestPage();
-    // userController.showLoginPage();
-    // userController.showRegisterPage();
 
     initEventServices();
 

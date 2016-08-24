@@ -110,10 +110,10 @@ class PostController{
             });
     }
     createComment(requestData){
-        // if (requestData.title.length < 10){
-        //     showPopup('error', 'Comment title must consist of atleast 10 symbols.');
-        //     return;
-        // }
+        if (requestData.title.length < 10){
+            showPopup('error', 'Comment title must consist of atleast 10 symbols.');
+            return;
+        }
 
         if (requestData.content.length < 1){
             showPopup('error', 'Comment content must consist of atleast 50 symbols.');

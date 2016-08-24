@@ -28,6 +28,7 @@ class PostView {
                     let content = $('#content').val();
                     //let date = (new Date()).toISOString()
                     let date = moment().format("MMMM Do YYYY");
+                    //TODO: format na data
 
                     let data = {
                         title: title,
@@ -117,7 +118,6 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let comments = $('#comments').val();
-                    let content = $('#content').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
