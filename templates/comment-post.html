@@ -11,9 +11,11 @@
                 <input type="text" value="{{ fullname }}{{ author }}" placeholder="Author" id="author" disabled>
             </li>
         </ul>
-
         <h1 class="title-form">Content:</h1>
-        <textarea class="content-field" placeholder="Content" id="content">{{ content }}</textarea>
+        <textarea class="content-field" placeholder="Content" id="content" disabled>{{ content }}</textarea>
+        <br>
+        <h2 class="title-form">Comments:</h2>
+        <textarea class="content-field" placeholder="Comments" id="comments">{{ comments }}</textarea>
         <br>
         <button type="button" id="create-new-comment-request-button">Publish</button>
     </form>

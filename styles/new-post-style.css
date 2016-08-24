@@ -32,11 +32,11 @@
 }
 
 .content-field {
-    resize: none;
+    resize:none;
     border: 3px solid #f2f2f2;
     outline: none;
-    width: 550px;
-    height: 300px;
+    width: 90%;
+    height: 150px;
     border-radius: 15px;
     text-align: left;
     font: 12px Lato-Light;
