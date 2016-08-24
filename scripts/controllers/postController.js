@@ -128,7 +128,7 @@ class PostController{
                 redirectUrl("#/");
             },
             function error(data) {
-                showPopup('error', 'An error has occurred while attempting ' + 'to create a new post.');
+                showPopup('error', 'An error has occurred while attempting ' + 'to create a new comment.');
             });
     }
 }
