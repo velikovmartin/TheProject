@@ -6,9 +6,10 @@
         <p class="subtitle">Posted on {{date}} by {{author}}</p>
         <p class="content">{{content}}</p>
         <br/>
-        Edited on {{modified}}
-        <a class="delete-button" href="#/posts/delete-{{_id}}" >delete</a>
+        Edit on {{modified}}
+        <a class="delete-button" href="#/posts/delete-{{_id}}" >X</a>
         <a class="edit-button" href="#/posts/edit-{{_id}}" >edit</a>
+        <a class="comment-button" href="#/posts/comments-{{_id}}">comment</a>
     </article>
 </li>
 {{/blogPosts}}

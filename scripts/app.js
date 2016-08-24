@@ -79,6 +79,13 @@
         }
          postController.showDeletePostPage(this.params['id']);
     });
+    onRoute('#/posts/comments-:id', function () {
+        if(!authService.isLoggedIn()) {
+            userController.showLoginPage(authService.isLoggedIn());
+            return;
+        }
+        postController.showCreateCommentPage(this.params['id']);
+    });
 
     bindEventHandler('login', function (ev, data) {
         userController.login(data);
@@ -94,6 +101,9 @@
     });
     bindEventHandler('deletePost', function (ev, data) {
         postController.deletePost(data);
+    });
+    bindEventHandler('createComment', function (ev, data) {
+        postController.createComment(data);
     });
 
 run('#/');

@@ -42,7 +42,6 @@ class PostView {
             });
         });
     }
-
     showEditPostPage(params){
         let _that = this;
 
@@ -100,6 +99,38 @@ class PostView {
                         _id: params._id
                     };
                     triggerEvent('deletePost', data);
+                });
+            });
+        });
+    }
+    showCreateCommentPage(params){
+        let _that = this;
+
+        $.get("templates/form-user.html",function (template) {
+            let renderedWrapper = Mustache.render(template, params);
+            $(_that._wrapperSelector).html(renderedWrapper);
+
+            $.get('templates/comment-post.html', function (template) {
+                var renderedContent = Mustache.render(template, params);
+                $(_that._mainContentSelector).html(renderedContent);
+
+                $('#create-new-comment-request-button').on('click', function (ev) {
+                    let title = $('#title').val();
+                    let author = $('#author').val();
+                    let comments = $('#comments').val();
+                    let date = new Date() //moment().format("MMMM Do YYYY");
+
+                    let data = {
+                        title: title,
+                        author: author,
+                        comments: comments,
+                        content: content,
+                        date: params.date,
+                        modified: moment().format("MMMM Do YYYY"),
+                        _id: params._id
+                    };
+
+                    triggerEvent('createComment', data);
                 });
             });
         });

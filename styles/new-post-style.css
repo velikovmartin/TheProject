@@ -68,6 +68,20 @@
     margin-right: 2%;
     float: right;
     border-radius: 10px 20px;
+    background-color: darkgray;
+    border: none;
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.comment-button{
+    position: relative;
+    margin-right: 2%;
+    float: right;
+    border-radius: 10px 20px;
     background-color: #06c0ab;
     border: none;
     color: white;
