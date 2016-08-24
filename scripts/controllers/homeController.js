@@ -5,7 +5,6 @@ class HomeController{
         this._appKey = appKey;
         this._baseServiceUrl = baseServiceUrl;
     }
-
     showGuestPage(){
         let _that = this;
 
@@ -37,7 +36,6 @@ class HomeController{
             }
         );
     }
-
     showUserPage(params){
         let _that = this;
         let recentPosts = [];

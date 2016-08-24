@@ -6,7 +6,7 @@ class HomeView {
     showGuestPage(sideBarData, mainData){
         let _that = this;
         $.get('templates/welcome-guest.html', function (template) {
-            let renderedWrapper = Mustache.render(template, { neshto: "niakakva stoiniost"});
+            let renderedWrapper = Mustache.render(template, {});
 
             $(_that._wrapperSelector).html(renderedWrapper);
 

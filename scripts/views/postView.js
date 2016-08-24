@@ -118,6 +118,7 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let comments = $('#comments').val();
+                    let content = $('#content').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
