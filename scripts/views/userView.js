@@ -32,13 +32,9 @@ class UserView {
                     };
                     triggerEvent('login', data);
                 };
-
-                // let pressEnter = function(event) {
-                //     event.preventDefault();
-                //     if (event.keyCode == 13) {
-                //         document.getElementById("login-request-button").click();
-                //     }
-                // };
+                $("#password").on("keypress", function(ev) {
+                    if(event.keyCode == 13 )
+                        doStuff().submit()})
 
                 $('#login-request-button').on('click', doStuff);
             });
