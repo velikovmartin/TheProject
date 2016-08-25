@@ -67,7 +67,6 @@ class UserController{
         redirectUrl('#/');
     }
     aboutUs (){
-        let requestUrl = this._baseServiceUrl;
-        redirect('#about')
+        redirectUrl('#aboutUs')
     }
 }
