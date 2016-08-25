@@ -67,6 +67,6 @@ class UserController{
         redirectUrl('#/');
     }
     aboutUs (){
-        redirectUrl('#aboutUs')
+        redirectUrl('#/about-us')
     }
 }
