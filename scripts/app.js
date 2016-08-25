@@ -34,7 +34,6 @@
             });
         }
     });
-
     onRoute("#/post-:id", function () {
         let top = $("#post-" + this.params['id']).position().top;
         $(window).scrollTop(top);
@@ -47,6 +46,9 @@
     });
     onRoute("#/logout", function () {
         userController.logout();
+    });
+    onRoute("#/about-us", function () {
+        userController.showAboutUsPage();
     });
     onRoute('#/posts/create', function () {
         if(!authService.isLoggedIn()) {
@@ -74,7 +76,7 @@
         }
          postController.showDeletePostPage(this.params['id']);
     });
-    onRoute('#/posts/comments-:id', function () {
+    onRoute('#/comments-:specialid', function () {
         if(!authService.isLoggedIn()) {
             userController.showLoginPage(authService.isLoggedIn());
             return;
