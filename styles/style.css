@@ -182,14 +182,14 @@ header {
     color: #565656;
     text-transform: uppercase;
     text-align: center;
-    border-bottom: 8px solid #019c8c;
+    border-bottom: 8px dotted #ff80d4;
 }
 
 .sidebar {
     float: left;
     width: 20%;
     height: 100%;
-    background-color: #06C0AB;
+    background-color: #ff80d4;
     color: white;
     font: 32px Lato;
     font-weight: 100;
@@ -272,7 +272,7 @@ footer {
     position: fixed;
     top: 35%;
     left: 45%;
-    border: 16px solid #f3f3f3;
+    border: 16px solid #ff80d4;
     border-radius: 50%;
     border-top: 16px solid #06C0AB;
     border-bottom: 16px solid #06C0AB;
@@ -294,7 +294,7 @@ footer {
 }
 
 #loader-3 {
-    border: 10px solid #f3f3f3;
+    border: 10px solid #ff80d4;
     border-radius: 50%;
     border-top: 10px solid #06C0AB;
     border-bottom: 10px solid #06C0AB;
@@ -305,7 +305,7 @@ footer {
 }
 
 #loader-4 {
-    border: 10px solid #f3f3f3;
+    border: 10px solid #ff80d4;
     border-radius: 50%;
     border-top: 10px solid #06C0AB;
     border-bottom: 10px solid #06C0AB;
@@ -316,7 +316,7 @@ footer {
 }
 
 #loader-5 {
-    border: 10px solid #f3f3f3;
+    border: 10px solid #ff80d4;
     border-radius: 50%;
     border-top: 10px solid #06C0AB;
     border-bottom: 10px solid #06C0AB;

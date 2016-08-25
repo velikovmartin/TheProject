@@ -9,7 +9,7 @@ a {
     float: left;
     width: 20px;
     border-radius: 40px;
-    background-color: #019c8c;
+    background-color: indigo;
 }
 
 .title {
@@ -38,4 +38,7 @@ a {
 
 .single-post {
     margin-bottom: 5%;
+}
+.main-content{
+    background-color: #f2f2f2;
 }

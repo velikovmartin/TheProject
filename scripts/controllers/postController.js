@@ -4,6 +4,7 @@ class PostController{
         this._requester = requester;
         this._appKey = appKey;
         this._baseServiceUrl = baseUrl + "/appdata/" + appKey + "/posts/";
+        this._baseCommentServiceUrl = baseUrl + "/appdata/" + appKey + "/comments/";
     }
 
     showCreatePostPage(params, isLoggedIn){
@@ -37,16 +38,16 @@ class PostController{
             }
         );
     }
-    showCreateCommentPage(id){
+    showCreateCommentPage(specialid){
         let _that = this;
-        let requestUrl = this._baseServiceUrl + id;
+        let requestUrl = this._baseCommentServiceUrl + specialid;
 
         this._requester.get(requestUrl,
             function success(data) {
                 _that._postView.showCreateCommentPage(data);
             },
             function error(data) {
-                showPopup('error', 'Error loading posts!');
+                showPopup('error', 'Error loading comments!');
                 console.log(data)
             }
         );
@@ -120,9 +121,9 @@ class PostController{
             return;
         }
 
-        let requestUrl = this._baseServiceUrl + requestData._id;
+        let requestUrl = this._baseCommentServiceUrl + requestData._specialid;
 
-        this._requester.put(requestUrl, requestData,
+        this._requester.post(requestUrl, requestData,
             function success(data) {
                 showPopup('success', 'You have successfully created a comment.');
                 redirectUrl("#/");

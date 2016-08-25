@@ -26,6 +26,7 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let content = $('#content').val();
+                    let specialid = $('#specialid').val();
                     //let date = (new Date()).toISOString()
                     let date = moment().format("MMMM Do YYYY");
                     //TODO: format na data
@@ -34,6 +35,7 @@ class PostView {
                         title: title,
                         author: author,
                         content: content,
+                        specialid: specialid,
                         date: date
                     };
 
@@ -57,12 +59,14 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let content = $('#content').val();
+                    let specialid = $('#specialid').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
                         title: title,
                         author: author,
                         content: content,
+                        specialid: specialid,
                         date: params.date,
                         modified: moment().format("MMMM Do YYYY"),
                         _id: params._id
@@ -119,6 +123,7 @@ class PostView {
                     let author = $('#author').val();
                     let comments = $('#comments').val();
                     let content = $('#content').val();
+                    let specialid = $('#specialid').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
@@ -126,9 +131,10 @@ class PostView {
                         author: author,
                         comments: comments,
                         content: content,
+                        specialid: specialid,
                         date: params.date,
                         modified: moment().format("MMMM Do YYYY"),
-                        _id: params._id
+                        _specialid: params._specialid
                     };
 
                     triggerEvent('createComment', data);
