@@ -8,10 +8,9 @@ class HomeController{
     showGuestPage(){
         let _that = this;
 
-        let recentPosts = [];
-                            // https://baas.kinvey.com   /appdata/    kid_HklM8dfu    /posts
+        // let recentPosts = [];
 
-        let requestUrl =    this._baseServiceUrl +      "/appdata/" + this._appKey + "/posts"
+        let requestUrl = this._baseServiceUrl + "/appdata/" + this._appKey + "/posts"
 
         this._requester.get(requestUrl,
             function success(data) {

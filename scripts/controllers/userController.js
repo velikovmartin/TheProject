@@ -11,6 +11,9 @@ class UserController{
     showRegisterPage(isLoggedIn){
         this._userView.showRegisterPage(isLoggedIn);
     }
+    showAboutUsPage(){
+        this._userView.showAboutUsPage();
+    }
     login(requestData){
         let requestUrl = this._baseServiceUrl + "login";
 
@@ -62,5 +65,8 @@ class UserController{
     logout(){
         sessionStorage.clear();
         redirectUrl('#/');
+    }
+    aboutUs(){
+        redirectUrl('#/about-us')
     }
 }

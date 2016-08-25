@@ -77,4 +77,19 @@ class UserView {
             });
         });
     }
+    showAboutUsPage(){
+        let _that = this;
+        let templateUrl = "templates/about-us.html";
+
+        $.get(templateUrl, function (template) {
+            let renderedWrapper = Mustache.render(template, null);
+            $(_that._wrapperSelector).html(renderedWrapper);
+
+            $.get('templates/about-us.html', function (template) {
+                let rendered = Mustache.render(template,null);
+                $(_that._mainContentSelector).html(rendered);
+                    triggerEvent('aboutUs');
+            });
+        });
+    }
 }
