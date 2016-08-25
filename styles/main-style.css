@@ -42,3 +42,38 @@ a {
 .main-content{
     background-color: #f2f2f2;
 }
+.about-us-photos{
+    display: inline-block;
+    position: relative;
+    margin-right: 2%;
+    float: left;
+    margin-left: 40%;
+    border-radius: 10px 20px;
+    background-color: darkgray;
+    border: none;
+    color: black;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
+
+}
+.about-us-photos-div{
+    position: absolute;
+    left: 15%;
+    top: 20%;
+
+}
+.about-us-photos-text{
+    z-index: 100;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    left: 150px;
+    top: 350px;
+}
