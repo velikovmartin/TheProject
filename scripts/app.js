@@ -48,6 +48,9 @@
     onRoute("#/logout", function () {
         userController.logout();
     });
+    onRoute("#/about-us", function () {
+        userController.showAboutUsPage();
+    });
     onRoute('#/posts/create', function () {
         if(!authService.isLoggedIn()) {
             userController.showLoginPage(authService.isLoggedIn());
