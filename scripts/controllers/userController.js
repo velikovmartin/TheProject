@@ -66,11 +66,7 @@ class UserController{
         sessionStorage.clear();
         redirectUrl('#/');
     }
-<<<<<<< HEAD
-    aboutUs(){
-=======
     aboutUs (){
->>>>>>> origin/master
         redirectUrl('#/about-us')
     }
 }
