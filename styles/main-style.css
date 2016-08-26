@@ -42,48 +42,30 @@ a {
 .main-content{
     background-color: #f2f2f2;
 }
-.about-us-photos-sla{
-    position: relative;
-    margin-right: 2%;
-    float: left;
-    margin-left: 25%;
-    border-radius: 10px;
-    background-color: darkgray;
-    border: none;
-    color: black;
-    padding: 4px 16px;
+.about-us-photos{
     text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    height: auto;
-    width: auto;
-    max-width: 300px;
-    max-height: 300px;
-}
-.about-us-photos-mar{
     position: relative;
-    margin-right: 2%;
-    float: left;
-    margin-left: 25%;
-    border-radius: 10px;
-    background-color: darkgray;
-    border: none;
-    color: black;
-    padding: 4px 16px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    height: auto;
-    width: auto;
-    max-width: 300px;
-    max-height: 300px;
 }
-.about-us-photos-text{
-    z-index: 100;
+.about-us-photos-h2{
     position: absolute;
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
-    left: 150px;
-    top: 350px;
+    top: 200px;
+    width: 100%;
+}
+.about-us-photos-span {
+    color: white;
+    font: bold 24px/45px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    padding:0 5px;
+
+}
+.about-us-photos-img {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    hight: 300px;
+    min-height: 300px;
+    max-height: 300px;
+
 }

@@ -79,7 +79,7 @@ class UserView {
     }
     showAboutUsPage(){
         let _that = this;
-        let templateUrl = "templates/about-us.html";
+        let templateUrl = "templates/form-guest.html";
 
         $.get(templateUrl, function (template) {
             let renderedWrapper = Mustache.render(template, null);
