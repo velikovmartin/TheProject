@@ -3,11 +3,11 @@ class UserView {
         this._wrapperSelector = wrapperSelector;
         this._mainContentSelector = mainContentSelector;
     }
-    showLoginPage(isLoggedIn){
+    showLoginPage(isLoggedIn) {
         let _that = this;
         let templateUrl;
 
-        if(isLoggedIn){
+        if (isLoggedIn) {
             templateUrl = "templates/form-user.html";
         }
         else {
@@ -19,34 +19,35 @@ class UserView {
             $(_that._wrapperSelector).html(renderedWrapper);
 
             $.get('templates/login.html', function (template) {
-                let rendered = Mustache.render(template,null);
+                let rendered = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(rendered);
 
-                let doStuff = function(ev) {
+                let doStuff = function (ev) {
                     let username = $('#username').val();
                     let password = $('#password').val();
 
                     let data = {
-                    username: username,
-                    password: password
+                        username: username,
+                        password: password
                     };
                     triggerEvent('login', data);
                 };
                 // to login with Enter button
-                $("#password").on("keypress", function(ev) {
-                    if(event.keyCode == 13)
-                doStuff().submit()});
+                $("#password").on("keypress", function (event) {
+                    if (event.keyCode == 13)
+                        doStuff()
+                });
 
                 $('#login-request-button').on('click', doStuff);
             });
         });
     }
-    showRegisterPage(isLoggedIn){
+    showRegisterPage(isLoggedIn) {
         let _that = this;
 
         let templateUrl;
 
-        if(isLoggedIn){
+        if (isLoggedIn) {
             templateUrl = "templates/form-user.html";
         }
         else {
@@ -58,7 +59,7 @@ class UserView {
             $(_that._wrapperSelector).html(renderedWrapper);
 
             $.get('templates/register.html', function (template) {
-                let rendered = Mustache.render(template,null);
+                let rendered = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(rendered);
                 $('#register-request-button').on('click', function (ev) {
                     let username = $('#username').val();
@@ -77,7 +78,7 @@ class UserView {
             });
         });
     }
-    showAboutUsPage(){
+    showAboutUsPage() {
         let _that = this;
         let templateUrl = "templates/form-guest.html";
 
@@ -86,9 +87,9 @@ class UserView {
             $(_that._wrapperSelector).html(renderedWrapper);
 
             $.get('templates/about-us.html', function (template) {
-                let rendered = Mustache.render(template,null);
+                let rendered = Mustache.render(template, null);
                 $(_that._mainContentSelector).html(rendered);
-                    triggerEvent('aboutUs');
+                triggerEvent('aboutUs');
             });
         });
     }

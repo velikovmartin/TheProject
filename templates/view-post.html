@@ -1,0 +1,26 @@
+<div id="single-post">
+    <article id="post-{{_id}}">
+        <h3 class="title">{{title}}</h3>
+        <p class="subtitle">Posted on {{date}} by {{author}}</p>
+        <p class="content">{{content}}</p>
+        <br/>
+        {{#modified}}
+        Edit on {{modified}}
+        {{/modified}}
+        <a class="delete-button" href="#/posts/delete-{{_id}}" >X</a>
+        <a class="edit-button" href="#/posts/edit-{{_id}}" >edit</a>
+    </article>
+    <div id="addComment" style="clear: both; max-width: 500px">
+        <input id="comment-title" type="text" placeholder="Title">
+        <textarea id="comment-body" class="content-field" placeholder="Comment"></textarea>
+        <button id="new-comment-button">Add Comment</button>
+    </div>
+    <hr />
+    <div>
+    {{#comments}}
+        <h4>{{title}}</h4>
+        <div class="comment-body">{{comment}}</div>
+        <div>{{author}} on {{date}}</div>
+    {{/comments}}
+    </div>
+</div>

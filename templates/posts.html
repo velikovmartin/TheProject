@@ -6,14 +6,12 @@
         <p class="subtitle">Posted on {{date}} by {{author}}</p>
         <p class="content">{{content}}</p>
         <br/>
+        {{#modified}}
         Edit on {{modified}}
+        {{/modified}}
         <a class="delete-button" href="#/posts/delete-{{_id}}" >X</a>
         <a class="edit-button" href="#/posts/edit-{{_id}}" >edit</a>
-        <a class="comment-button" href="#/comments/-{{ _specialid }}">comment</a>
-        <div>&nbsp;</div>
-        <h3>{{author}}</h3>
-        <p class="subtitle">Posted on {{date}} by {{author}}</p>
-        <p class="content">{{comments}}</p>
+        <a class="comment-button" href="#/posts/view-{{_id}}">show comments</a>
     </article>
 </li>
 {{/blogPosts}}

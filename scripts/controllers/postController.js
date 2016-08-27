@@ -24,6 +24,28 @@ class PostController{
             }
         );
     }
+    showViewPostPage(id, isLoggedIn){
+        let _that = this;
+        let requestUrl = this._baseServiceUrl + id;
+
+        this._requester.get(requestUrl,
+            function success(data) {
+                _that._requester.get(_that._baseCommentServiceUrl + "?query=" + JSON.stringify({postId: id}) + "&sort={\"_kmd.ect\": -1}",
+                    function(comments) {
+                        data.comments = comments;
+                        _that._postView.showViewPostPage(data, isLoggedIn);
+                    }, function() {
+                        showPopup('error', 'Error loading posts!');
+                        console.log(data)
+                    }
+                )
+            },
+            function error(data) {
+                showPopup('error', 'Error loading posts!');
+                console.log(data)
+            }
+        );
+    }
     showDeletePostPage(id){
         let _that = this;
         let requestUrl = this._baseServiceUrl + id;
@@ -111,25 +133,26 @@ class PostController{
             });
     }
     createComment(requestData){
-        if (requestData.title.length < 10){
-            showPopup('error', 'Comment title must consist of atleast 10 symbols.');
+        if (requestData.title.length < 5){
+            showPopup('error', 'Comment title must consist of atleast 5 symbols.');
             return;
         }
 
-        if (requestData.content.length < 1){
-            showPopup('error', 'Comment content must consist of atleast 50 symbols.');
+        if (requestData.comment.length < 1){
+            showPopup('error', 'Comment content must consist of atleast 1 symbols.');
             return;
         }
 
-        let requestUrl = this._baseCommentServiceUrl + requestData._specialid;
+        let requestUrl = this._baseCommentServiceUrl;
 
         this._requester.post(requestUrl, requestData,
             function success(data) {
                 showPopup('success', 'You have successfully created a comment.');
-                redirectUrl("#/");
+                redirectUrl("#/posts/view-" + requestData.postId);
             },
             function error(data) {
                 showPopup('error', 'An error has occurred while attempting ' + 'to create a new comment.');
+                showPopup('success', 'LOGIN to comment');
             });
     }
 }

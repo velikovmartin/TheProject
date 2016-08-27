@@ -77,17 +77,49 @@ class PostView {
             });
         });
     }
+    showViewPostPage(params, isLoggedIn){
+        let _that = this;
+        let templateUrl;
+
+        if(isLoggedIn){
+            templateUrl = "templates/form-user.html";
+        }
+        else {
+            templateUrl = "templates/form-guest.html";
+        }
+
+        $.get(templateUrl,function (template) {
+            let renderedWrapper = Mustache.render(template, params);
+            $(_that._wrapperSelector).html(renderedWrapper);
+
+            $.get('templates/view-post.html', function (template) {
+                var renderedContent = Mustache.render(template, params);
+                $(_that._mainContentSelector).html(renderedContent);
+
+                $('#new-comment-button').on('click', function (ev) {
+                    let data = {
+                        title: $('#comment-title').val(),
+                        comment: $('#comment-body').val(),
+                        date: new Date(),
+                        postId: params._id
+                    };
+
+                    triggerEvent('createComment', data);
+                });
+            });
+        });
+    }
     showDeletePostPage(params){
         let _that = this;
-    
+
         $.get("templates/form-user.html",function (template) {
             let renderedWrapper = Mustache.render(template, params);
             $(_that._wrapperSelector).html(renderedWrapper);
-    
+
             $.get('templates/delete-post.html', function (template) {
                 var renderedContent = Mustache.render(template, params);
                 $(_that._mainContentSelector).html(renderedContent);
-    
+
                 $('#create-delete-post-request-button').on('click', function (ev) {
                     let title = $('#title').val();
                     let author = $('#author').val();

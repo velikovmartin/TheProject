@@ -18,7 +18,7 @@
 
     let userView = new UserView(selector,mainContentSelector);
     let userController = new UserController(userView,requester,baseUrl,appKey);
-    
+
     let postView = new PostView(selector, mainContentSelector);
     let postController = new PostController(postView,requester,baseUrl,appKey);
 
@@ -77,12 +77,8 @@
         }
          postController.showDeletePostPage(this.params['id']);
     });
-    onRoute('#/posts/comments-:id', function () {
-        if(!authService.isLoggedIn()) {
-            userController.showLoginPage(authService.isLoggedIn());
-            return;
-        }
-        postController.showCreateCommentPage(this.params['id']);
+    onRoute('#/posts/view-:id', function () {
+        postController.showViewPostPage(this.params['id'], authService.isLoggedIn());
     });
 
     bindEventHandler('login', function (ev, data) {
