@@ -1,26 +1,32 @@
 <div id="single-post">
-    <article id="post-{{_id}}">
-        <h3 class="title">{{title}}</h3>
-        <p class="subtitle">Posted on {{date}} by {{author}}</p>
-        <p class="content">{{content}}</p>
+    <article id="post-{{post._id}}" style="margin-left: 5%">
+        <h3 class="title">{{post.title}}</h3>
+        <p class="subtitle">Posted on {{post.date}} by {{post.author}}</p>
+        <p class="content">{{post.content}}</p>
         <br/>
-        {{#modified}}
-        Edit on {{modified}}
-        {{/modified}}
-        <a class="delete-button" href="#/posts/delete-{{_id}}" >X</a>
-        <a class="edit-button" href="#/posts/edit-{{_id}}" >edit</a>
+        {{#post.modified}}
+        Edit on {{post.modified}}
+        {{/post.modified}}
+        <a class="delete-button" href="#/posts/delete-{{post._id}}" >X</a>
+        <a class="edit-button" href="#/posts/edit-{{post._id}}" >edit</a>
     </article>
+    <br/><br/><br/>
     <div id="addComment" style="clear: both; max-width: 500px">
-        <input id="comment-title" type="text" placeholder="Title">
+        <input id="comment-title" type="text" placeholder="Title" hidden>
+        <input id="comment-author" value="{{ user.fullname }}" type="text"  disabled>
         <textarea id="comment-body" class="content-field" placeholder="Comment"></textarea>
         <button id="new-comment-button">Add Comment</button>
     </div>
-    <hr />
+    <hr/>
     <div>
     {{#comments}}
-        <h4>{{title}}</h4>
-        <div class="comment-body">{{comment}}</div>
-        <div>{{author}} on {{date}}</div>
+        <form class="comment-box">
+            <h4 class="subtitle">{{author}}:</h4>
+            <div class="comment-body" style="margin-left: 10px">{{comment}}</div>
+            <a class="delete-comment-button" href="#/comments/delete-{{_id}}">X</a>
+        </form>
+        <div style="margin-left: 250px">{{date}}</div>
+        <br/>
     {{/comments}}
     </div>
 </div>

@@ -100,8 +100,9 @@ class PostView {
                     let data = {
                         title: $('#comment-title').val(),
                         comment: $('#comment-body').val(),
-                        date: new Date(),
-                        postId: params._id
+                        author: $('#comment-author').val(),
+                        date: moment().format("MMMM Do YYYY"),
+                        postId: params.post._id
                     };
 
                     triggerEvent('createComment', data);
@@ -153,23 +154,48 @@ class PostView {
                 $('#create-new-comment-request-button').on('click', function (ev) {
                     let title = $('#title').val();
                     let author = $('#author').val();
-                    let comments = $('#comments').val();
                     let content = $('#content').val();
-                    let specialid = $('#specialid').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
                         title: title,
                         author: author,
-                        comments: comments,
                         content: content,
-                        specialid: specialid,
                         date: params.date,
                         modified: moment().format("MMMM Do YYYY"),
-                        _specialid: params._specialid
                     };
 
                     triggerEvent('createComment', data);
+                });
+            });
+        });
+    }
+    showDeleteCommentPage(params){
+        let _that = this;
+
+        $.get("templates/form-user.html",function (template) {
+            let renderedWrapper = Mustache.render(template, params);
+            $(_that._wrapperSelector).html(renderedWrapper);
+
+            $.get('templates/delete-comment.html', function (template) {
+                var renderedContent = Mustache.render(template, params);
+                $(_that._mainContentSelector).html(renderedContent);
+
+                $('#create-delete-comment-request-button').on('click', function (ev) {
+                        let title= $('#comment-title').val();
+                        let comment= $('#comment-body').val();
+                        let author= $('#comment-author').val();
+                        let date= moment().format("MMMM Do YYYY");
+                        let postId= params._id;
+
+                    let data = {
+                        title: title,
+                        comment: comment,
+                        author: author,
+                        date: params.date,
+                        postId: params._id
+                    };
+                    triggerEvent('deleteComment', data);
                 });
             });
         });

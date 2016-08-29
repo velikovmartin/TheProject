@@ -34,7 +34,6 @@
             });
         }
     });
-
     onRoute("#/post-:id", function () {
         let top = $("#post-" + this.params['id']).position().top;
         $(window).scrollTop(top);
@@ -78,7 +77,21 @@
          postController.showDeletePostPage(this.params['id']);
     });
     onRoute('#/posts/view-:id', function () {
-        postController.showViewPostPage(this.params['id'], authService.isLoggedIn());
+        let params = {
+            user: {
+                fullname: authService.getCurrentUserFullName()
+            },
+            _id: this.params.id
+        };
+
+        postController.showViewPostPage(params, authService.isLoggedIn());
+    });
+    onRoute('#/comments/delete-:id', function () {
+        if(!authService.isLoggedIn()) {
+            userController.showLoginPage(authService.isLoggedIn());
+            return;
+        }
+        postController.showDeleteCommentPage(this.params['id'], authService.isLoggedIn());
     });
 
     bindEventHandler('login', function (ev, data) {
@@ -98,6 +111,9 @@
     });
     bindEventHandler('createComment', function (ev, data) {
         postController.createComment(data);
+    });
+    bindEventHandler('deleteComment', function (ev, data) {
+        postController.deleteComment(data);
     });
 
 run('#/');

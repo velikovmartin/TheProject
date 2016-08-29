@@ -63,6 +63,19 @@
     display: inline-block;
     font-size: 16px;
 }
+.delete-comment-button{
+    position: relative;
+    float: right;
+    border-radius: 10px 20px;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 .edit-button{
     position: relative;
     margin-right: 2%;
@@ -90,4 +103,35 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+.back-button{
+    position: relative;
+    margin-right: 2%;
+    float: right;
+    border-radius: 10px 20px;
+    background-color: #ff80d4;
+    border: none;
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.comment-box{
+    /*position: relative;*/
+    margin-left: 1%;
+    text-align: left;
+    border: solid;
+    border-color: #06c0ab;
+    border-radius:10px;
+    max-width: 450px;
+}
+.comment-body{
+    max-width: 100%;
+    font-style: italic;
+    word-wrap: break-word;
+}
+#new-comment-button{
+    margin-left: 3%;
 }

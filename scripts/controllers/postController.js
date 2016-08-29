@@ -24,16 +24,21 @@ class PostController{
             }
         );
     }
-    showViewPostPage(id, isLoggedIn){
+    showViewPostPage(params, isLoggedIn){
+        let id = params._id;
         let _that = this;
         let requestUrl = this._baseServiceUrl + id;
 
         this._requester.get(requestUrl,
-            function success(data) {
+            function success(postData) {
                 _that._requester.get(_that._baseCommentServiceUrl + "?query=" + JSON.stringify({postId: id}) + "&sort={\"_kmd.ect\": -1}",
-                    function(comments) {
-                        data.comments = comments;
-                        _that._postView.showViewPostPage(data, isLoggedIn);
+                    function(commentsData) {
+                        let viewParams = {
+                            post: postData,
+                            comments: commentsData,
+                            user: params.user
+                        }
+                        _that._postView.showViewPostPage(viewParams, isLoggedIn);
                     }, function() {
                         showPopup('error', 'Error loading posts!');
                         console.log(data)
@@ -70,6 +75,20 @@ class PostController{
             },
             function error(data) {
                 showPopup('error', 'Error loading comments!');
+                console.log(data)
+            }
+        );
+    }
+    showDeleteCommentPage(postId){
+        let _that = this;
+        let requestUrl = this._baseCommentServiceUrl + postId;
+
+        this._requester.get(requestUrl,
+            function success(data) {
+                _that._postView.showDeleteCommentPage(data);
+            },
+            function error(data) {
+                showPopup('error', 'Error loading posts!');
                 console.log(data)
             }
         );
@@ -122,7 +141,6 @@ class PostController{
     deletePost(requestData){
 
         let requestUrl = this._baseServiceUrl + requestData._id;
-
         this._requester.delete(requestUrl, requestData,
             function success(data) {
                 showPopup('success', 'You have successfully deleted the post.');
@@ -131,9 +149,10 @@ class PostController{
             function error(data) {
                 showPopup('error', 'An error has occurred while attempting ' + 'to delete a post.');
             });
+
     }
     createComment(requestData){
-        if (requestData.title.length < 5){
+        if (requestData.title.length < 0){
             showPopup('error', 'Comment title must consist of atleast 5 symbols.');
             return;
         }
@@ -153,6 +172,18 @@ class PostController{
             function error(data) {
                 showPopup('error', 'An error has occurred while attempting ' + 'to create a new comment.');
                 showPopup('success', 'LOGIN to comment');
+            });
+    }
+    deleteComment(requestData){
+        let requestUrl = this._baseCommentServiceUrl + requestData.postId;
+        this._requester.delete(requestUrl, requestData,
+            function success(data) {
+                showPopup('success', 'You have successfully deleted the comment.');
+                // redirectUrl("#/");
+                history.go(-1);
+            },
+            function error(data) {
+                showPopup('error', 'An error has occurred while attempting ' + 'to delete a comment.');
             });
     }
 }
