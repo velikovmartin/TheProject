@@ -171,7 +171,8 @@ class PostController{
             },
             function error(data) {
                 showPopup('error', 'An error has occurred while attempting ' + 'to create a new comment.');
-                showPopup('success', 'LOGIN to comment');
+                redirectUrl("#/login");
+                // redirectUrl(location.hash);
             });
     }
     deleteComment(requestData){

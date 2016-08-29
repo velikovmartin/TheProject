@@ -48,7 +48,7 @@
         userController.logout();
     });
     onRoute("#/about-us", function () {
-        userController.showAboutUsPage();
+        userController.showAboutUsPage(authService.isLoggedIn());
     });
     onRoute('#/posts/create', function () {
         if(!authService.isLoggedIn()) {

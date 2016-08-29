@@ -78,10 +78,15 @@ class UserView {
             });
         });
     }
-    showAboutUsPage() {
+    showAboutUsPage(isLoggedIn) {
         let _that = this;
-        let templateUrl = "templates/form-guest.html";
-
+        let templateUrl;
+        if (isLoggedIn) {
+            templateUrl = "templates/form-user.html";
+        }
+        else {
+            templateUrl = "templates/form-guest.html";
+        }
         $.get(templateUrl, function (template) {
             let renderedWrapper = Mustache.render(template, null);
             $(_that._wrapperSelector).html(renderedWrapper);

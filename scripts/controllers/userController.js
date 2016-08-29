@@ -11,8 +11,8 @@ class UserController{
     showRegisterPage(isLoggedIn){
         this._userView.showRegisterPage(isLoggedIn);
     }
-    showAboutUsPage(){
-        this._userView.showAboutUsPage();
+    showAboutUsPage(isLoggedIn){
+        this._userView.showAboutUsPage(isLoggedIn);
     }
     login(requestData){
         let requestUrl = this._baseServiceUrl + "login";
@@ -24,7 +24,6 @@ class UserController{
                 sessionStorage['username'] = data.username;
                 sessionStorage['fullName'] = data.fullname;
                 showPopup('success', 'You have successfully logged in.');
-                // redirectUrl(location.hash); // TODO: make it work!
                 redirectUrl('#/');
             },
             function error(data) {
@@ -51,7 +50,7 @@ class UserController{
         }
         delete requestData['confirmPassword'];
 
-        let requestUrl = this._baseServiceUrl; // TODO check this out
+        let requestUrl = this._baseServiceUrl;
 
         this._requester.post(requestUrl,requestData,
             function success(data) {
