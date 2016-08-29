@@ -26,16 +26,12 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let content = $('#content').val();
-                    let specialid = $('#specialid').val();
-                    //let date = (new Date()).toISOString()
                     let date = moment().format("MMMM Do YYYY");
-                    //TODO: format na data
 
                     let data = {
                         title: title,
                         author: author,
                         content: content,
-                        specialid: specialid,
                         date: date
                     };
 
@@ -59,14 +55,12 @@ class PostView {
                     let title = $('#title').val();
                     let author = $('#author').val();
                     let content = $('#content').val();
-                    let specialid = $('#specialid').val();
                     let date = new Date() //moment().format("MMMM Do YYYY");
 
                     let data = {
                         title: title,
                         author: author,
                         content: content,
-                        specialid: specialid,
                         date: params.date,
                         modified: moment().format("MMMM Do YYYY"),
                         _id: params._id

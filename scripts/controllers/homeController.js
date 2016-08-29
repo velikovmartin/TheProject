@@ -15,17 +15,14 @@ class HomeController{
         this._requester.get(requestUrl,
             function success(data) {
 
-                //TODO: ideia - resortirane po drug nachin na postovete
                 data.sort(function (elem1, elem2) {
                     let date1 = new Date(elem1._kmd.ect);
                     let date2 = new Date(elem2._kmd.ect);
                     return date2 - date1;
                 });
 
-                // let currentId = 1;
                 for (let i = 0; i < data.length && i < 5; i++){
                     data[i].postId = i+1;
-                    //recentPosts.push(data[i]);
                 }
 
                 _that._homeView.showGuestPage(data.slice(0, 5), data);
